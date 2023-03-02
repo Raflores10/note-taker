@@ -24,13 +24,13 @@ router.post("/notes", (req,res)=>{
         } else {
             const notesData = JSON.parse(data);
             notesData.push(newObj);
-            fs.writeFile("../db.json", JSON.stringify(noteData, null, 4), (err) => {
+            fs.writeFile("./db/db.json", JSON.stringify(notesData, null, 4), (err) => {
                 if (err) {
                     res.status(500).send("Error,Something went wrong!")
                     throw err;
                 } else {
-                    console.log('Added data')
-                    res.send("Added data");
+                    res.send("Added data")
+                    console.log(notesData)
                 }
             })
         }
